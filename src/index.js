@@ -38,13 +38,13 @@ const resolvers = {
       return "The Leftovers themed coffee mug";
     },
     price() {
-      return 8.88;
+      return 11.88;
     },
     releaseYear() {
-      return 2018;
+      return 2015;
     },
     rating() {
-      return 4.96;
+      return 4.89;
     },
     inStock() {
       return true;
