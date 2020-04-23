@@ -6,7 +6,8 @@ const typeDefs = `
         greeting(name: String, position: String): String!
         me: User!
         post: Post!
-        add(a: Float!, b: Float!): Float!
+        add(numbers: [Float!]!): Float!
+        grades: [Int!]!
     }
 
     type User {
@@ -28,9 +29,15 @@ const typeDefs = `
 const resolvers = {
   Query: {
     add(parent, args, ctx, info) {
-      if (args) {
-        return args.a + args.b;
+      if (args.numbers.length === 0) {
+        return 0;
       }
+      return args.numbers.reduce((acc, cur) => {
+        return acc + cur;
+      });
+    },
+    grades(parent, args, ctx, info) {
+      return [99, 88, 94];
     },
     greeting(parent, args, ctx, info) {
       if (args.name) {
