@@ -25,25 +25,29 @@ const posts = [
     id: "77",
     title: "What a title!",
     body: "lorem if youve got em",
-    published: true
+    published: true,
+    author: "1"
   },
   {
     id: "55",
     title: "The Daily Beatings",
     body: "Will continue until morale improves",
-    published: true
+    published: true,
+    author: "1"
   },
   {
     id: "70",
     title: "Ixnay ",
     body: "ipsem in the membrane",
-    published: false
+    published: false,
+    author: "2"
   },
   {
     id: "46",
     title: "WIP",
     body: "Ixnay in the membrane",
-    published: false
+    published: false,
+    author: "3"
   }
 ];
 
@@ -68,6 +72,7 @@ const typeDefs = `
         title: String!
         body: String!
         published: Boolean!
+        author: User!
     }
 `;
 
@@ -110,6 +115,13 @@ const resolvers = {
         body: "ipsem till you lorem",
         published: false
       };
+    }
+  },
+  Post: {
+    author(parent, args, ctx, info) {
+      return users.find(user => {
+        return user.id === parent.author;
+      });
     }
   }
 };
