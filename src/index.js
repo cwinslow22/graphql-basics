@@ -54,19 +54,23 @@ const posts = [
 const comments = [
   {
     id: "11",
-    text: "My first comment!"
+    text: "My first comment!",
+    author: "1"
   },
   {
     id: "14",
-    text: "This post sucks!"
+    text: "This post sucks!",
+    author: "2"
   },
   {
     id: "15",
-    text: "gonna have to disagree with you ...."
+    text: "gonna have to disagree with you ....",
+    author: "3"
   },
   {
     id: "17",
-    text: "cha right!"
+    text: "cha right!",
+    author: "1"
   }
 ];
 
@@ -86,6 +90,7 @@ const typeDefs = `
         email: String!
         age: Int
         posts: [Post!]!
+        comments: [Comment!]!
     }
 
     type Post {
@@ -99,6 +104,7 @@ const typeDefs = `
     type Comment {
       id: ID!
       text: String!
+      author: User!
     }
 `;
 
@@ -158,6 +164,18 @@ const resolvers = {
     posts(parent, args, ctx, info) {
       return posts.filter(post => {
         return post.author === parent.id;
+      });
+    },
+    comments(parent, args, ctx, info) {
+      return comments.filter(comment => {
+        return comment.author === parent.id;
+      });
+    }
+  },
+  Comment: {
+    author(parent, args, ctx, info) {
+      return users.find(user => {
+        return user.id === parent.author;
       });
     }
   }
