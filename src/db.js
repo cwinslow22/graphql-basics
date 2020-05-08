@@ -59,7 +59,7 @@ const comments = [
     id: "14",
     text: "This post sucks!",
     author: "2",
-    post: "46"
+    post: "77"
   },
   {
     id: "15",
@@ -71,7 +71,7 @@ const comments = [
     id: "17",
     text: "cha right!",
     author: "1",
-    post: "70"
+    post: "55"
   },
   {
     id: "18",
